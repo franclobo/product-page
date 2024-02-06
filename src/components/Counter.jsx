@@ -1,13 +1,34 @@
+import { useState } from "react";
+import { IoCartOutline } from "react-icons/io5";
 
 export const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
   return (
-    <section className="count">
+    <section className="counter">
       <div className="count__container">
-        <button className="count__container__button">-</button>
-        <p className="count__container__number">1</p>
-        <button className="count__container__button">+</button>
+        <button className="count__container__button_plus" onClick={decrement}>
+          -
+        </button>
+        <p className="count__container__number">{count}</p>
+        <button className="count__container__button_minus" onClick={increment}>
+          +
+        </button>
       </div>
-      <button className="count__add">Add to cart</button>
+      <button className="count__add">
+        <IoCartOutline />
+        Add to cart
+      </button>
     </section>
-  )
-}
+  );
+};
