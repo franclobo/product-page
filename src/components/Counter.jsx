@@ -6,6 +6,7 @@ export const Counter = () => {
 
   const value = useContext(DataContext);
   const [count, setCount] = value.count;
+  const { addToCart } = value;
 
   const increment = () => {
     setCount(count + 1);
@@ -28,7 +29,7 @@ export const Counter = () => {
           +
         </button>
       </div>
-      <button className="count__add">
+      <button className="count__add" onClick={addToCart}>
         <IoCartOutline />
         Add to cart
       </button>

@@ -1,4 +1,5 @@
-import * as React from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "../context/DataContext";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,7 +18,11 @@ import { Basquet } from "./Basquet";
 const pages = ["Collection", "Men", "Women", "About", "Contact"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const value = useContext(DataContext);
+  const [cartItems] = value.cartItems;
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -27,12 +32,14 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <nav className="navbar">
       <AppBar position="static" sx={{ boxShadow: "none" }}>
-        <Container
-          maxWidth="xl"
-        >
+        <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ flexDirection: { md: "row" } }}>
             <Typography
               variant="h1"
@@ -183,7 +190,10 @@ function ResponsiveAppBar() {
                     my: 2,
                     color: "hsl(236, 13%, 42%)",
                     display: "block",
-                    "&:hover": { color: "hsl(5, 85%, 63%)", background: "none" },
+                    "&:hover": {
+                      color: "hsl(5, 85%, 63%)",
+                      background: "none",
+                    },
                     fontFamily: "inter",
                     fontWeight: 400,
                     textTransform: "capitalize",
@@ -195,9 +205,9 @@ function ResponsiveAppBar() {
             </Box>
             <ul className="icons">
               <li className="icons__cart">
-                <span className="number">1</span>
-                <img src={Cart} alt="cart" />
-                <Basquet />
+                { cartItems.length > 0 ? <span className="number">{cartItems.length}</span> : null }
+                <img src={Cart} alt="cart" onClick={handleOpen}/>
+                  {open ? <Basquet /> : null}
               </li>
               <li className="icons__avatar">
                 <img src={Avatar} alt="avatar" />
