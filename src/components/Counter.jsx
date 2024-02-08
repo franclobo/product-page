@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { IoCartOutline } from "react-icons/io5";
+import { DataContext } from "../context/DataContext";
 
 export const Counter = () => {
-  const [count, setCount] = useState(0);
+
+  const value = useContext(DataContext);
+  const [count, setCount] = value.count;
 
   const increment = () => {
     setCount(count + 1);
-  };
+  }
 
   const decrement = () => {
     if (count > 0) {
       setCount(count - 1);
     }
-  };
+  }
 
   return (
     <section className="counter">
