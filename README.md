@@ -32,7 +32,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+| Desktop | Mobile |
+|---|---|
+| ![image](https://github.com/franclobo/product-page/assets/58642949/ee06fc95-abef-4cc1-a3e4-63091314c91a) | ![image](https://github.com/franclobo/product-page/assets/58642949/352f7ffa-046b-42d9-8026-d72bc2bda689) |
+
+
 
 ### Links
 
