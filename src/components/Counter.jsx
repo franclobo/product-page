@@ -13,7 +13,7 @@ export const Counter = () => {
   }
 
   const decrement = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     }
   }

@@ -6,7 +6,7 @@ export const DataContext = createContext();
 export const DataProvider = (props) => {
   const [total, setTotal] = useState(0);
   const [price, setPrice] = useState(250);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [discount, setDiscount] = useState(50);
   const [cartItems, setCartItems] = useState([]);
 
